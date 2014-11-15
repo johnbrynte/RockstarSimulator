@@ -12,7 +12,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 	[SerializeField]
 	private float directionSpeed = 3f;
 	[SerializeField]
-	private float rotationDegreePerSecond = 240f;
+	private float rotationDegreePerSecond = 120f;
 	
 	private float speed = 0.0f;
 	private float direction = 0.0f;

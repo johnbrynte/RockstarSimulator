@@ -1183,11 +1183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceAway: 5
-  distanceUp: 2
+  distanceUp: 1.14999998
   smooth: 3
   followXform: {fileID: 1164703739}
-  offset: {x: 0, y: 1.5, z: 0}
-  camSmoothDampTime: .100000001
+  offset: {x: 0, y: .779999971, z: 0}
+  camSmoothDampTime: .300000012
 --- !u!1 &1038492708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1823,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .310000002
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10

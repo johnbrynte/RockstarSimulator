@@ -10,20 +10,35 @@ public class ThirdPersonCamera : MonoBehaviour {
 	[SerializeField]
 	private float smooth;
 	[SerializeField]
-	private Transform followXform;
+	private Transform followXForm;
+	[SerializeField]
+	private CharacterControllerLogic character;
 	[SerializeField]
 	private Vector3 offset = Vector3.zero;
 
-	private Vector3 targetPosition;
 	private Vector3 lookDir;
+	private Vector3 curLookDir;
+	private Vector3 targetPosition;
 
 	private Vector3 velocityCamSmooth = Vector3.zero;
 	[SerializeField]
 	private float camSmoothDampTime;
+	private Vector3 velocityLookDir = Vector3.zero;
+	[SerializeField]
+	private float lookDirDampTime;
+
+	private CameraStates cameraState = CameraStates.Behind;
+
+	public enum CameraStates {
+		Behind,
+		Free
+	}
 
 	// Use this for initialization
 	void Start () {
-		followXform = GameObject.FindWithTag("Player").transform;
+		character = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogic>();
+		followXForm = GameObject.FindWithTag("Player").transform;
+		lookDir = followXForm.forward;
 	}
 	
 	// Update is called once per frame
@@ -32,15 +47,32 @@ public class ThirdPersonCamera : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-		Vector3 characterOffset = followXform.position + offset;
+		float leftX = Input.GetAxis("Horizontal");
+		float leftY = Input.GetAxis("Vertical");
+		//float rightX = Input.GetAxis("RightStickX");
+		//float rightY = Input.GetAxis("RightStickY");
 
-		lookDir = characterOffset - this.transform.position;
-		lookDir.y = 0f;
-		lookDir.Normalize();
+		Vector3 characterOffset = followXForm.position + offset;
+
+		switch (cameraState) {
+			case CameraStates.Behind:
+				if (character.IsInLocomotion() && character.Speed > character.LocomotionThreshold) {
+					lookDir = Vector3.Lerp(followXForm.right * (leftX < 0 ? 1f : -1f), followXForm.forward * (leftY < 0 ? -1f : 11f), Mathf.Abs(Vector3.Dot(this.transform.forward, followXForm.forward)));
+
+					lookDir = characterOffset - this.transform.position;
+					lookDir.y = 0f;
+					lookDir.Normalize();
+
+					curLookDir = Vector3.SmoothDamp(curLookDir, lookDir, ref velocityLookDir, lookDirDampTime);
+				}
+				break;
+			case CameraStates.Free:
+				break;
+		}
 
 		// move to the target position behind the character
-		//targetPosition = followXform.position + Vector3.up * distanceUp - followXform.forward * distanceAway;
-		targetPosition = characterOffset + followXform.up * distanceUp - lookDir * distanceAway;
+		targetPosition = characterOffset + followXForm.up * distanceUp - lookDir * distanceAway;
+
 		CompensateForWalls(characterOffset, ref targetPosition);
 		SmoothPosition(this.transform.position, targetPosition);
 		transform.LookAt(characterOffset);

@@ -12,7 +12,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	[SerializeField]
 	private Transform followXForm;
 	[SerializeField]
-	private CharacterControllerLogic character;
+	private CharacterControllerLogicNew character;
 	[SerializeField]
 	private Vector3 offset = Vector3.zero;
 
@@ -36,8 +36,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		character = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogic>();
-		followXForm = GameObject.FindWithTag("Player").transform;
+		//character = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogicNew>();
+		//if(character == null)
+	///		Debug.Log ("CHAR IS NULL ");
+		//followXForm = GameObject.FindWithTag("Player").transform;
+		followXForm = character.transform;
 		lookDir = followXForm.forward;
 	}
 	

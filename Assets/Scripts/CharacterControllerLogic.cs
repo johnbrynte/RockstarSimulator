@@ -15,6 +15,10 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private float rotationDegreePerSecond = 120f;
     [SerializeField]
     private float turnSmoothing = 3f;
+	[SerializeField]
+	private float jumpSpeed = 2f;
+	[SerializeField]
+	private float groundDist = 0.2f;
 	
 	private float speed = 0.0f;
 	private float direction = 0.0f;
@@ -91,8 +95,21 @@ public class CharacterControllerLogic : MonoBehaviour {
             StickToWorldspace(this.transform, gamecam.transform, ref targetDirection);
 
 			animator.SetFloat("speed", speed);
+
 			//animator.SetFloat("direction", direction, directionDampTime, Time.deltaTime);
+			if(Input.GetKey(KeyCode.JoystickButton0)) {
+				if(IsGrounded()) {
+					Debug.Log("Jumping");
+					Jump ();
+				}
+
+			}
 		}
+	}
+
+	public void Jump() { 
+		//animation.Play("jump_pose"); 
+		this.rigidbody.AddForce(Vector3.up *jumpSpeed);
 	}
 
 	public void StickToWorldspace (Transform root, Transform camera, ref Vector3 directionOut) {//ref float directionOut, ref float speedOut) {
@@ -123,6 +140,17 @@ public class CharacterControllerLogic : MonoBehaviour {
 
 	public bool IsInLocomotion () {
 		return stateInfo.nameHash == m_LocomotionId;
+	}
+
+	private bool IsGrounded () {
+		RaycastHit rayhit;
+		if(Physics.Raycast(this.transform.position,Vector3.down,out rayhit)) {
+			if(rayhit.distance < groundDist)
+				return true;
+		}
+
+		
+		return false;
 	}
 
 }

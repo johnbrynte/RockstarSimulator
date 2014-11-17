@@ -16,9 +16,9 @@ public class CharacterControllerLogic : MonoBehaviour {
     [SerializeField]
     private float turnSmoothing = 3f;
 	[SerializeField]
-	private float jumpSpeed = 2f;
+	private float jumpSpeed = 25000f;
 	[SerializeField]
-	private float groundDist = 0.2f;
+	private float groundDist = 0.05f;
 	
 	private float speed = 0.0f;
 	private float direction = 0.0f;
@@ -97,7 +97,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 			animator.SetFloat("speed", speed);
 
 			//animator.SetFloat("direction", direction, directionDampTime, Time.deltaTime);
-			if(Input.GetKey(KeyCode.JoystickButton0)) {
+			if(Input.GetKeyDown(KeyCode.JoystickButton0)) {
 				if(IsGrounded()) {
 					Debug.Log("Jumping");
 					Jump ();

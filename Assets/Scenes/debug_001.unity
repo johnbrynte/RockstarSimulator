@@ -497,7 +497,7 @@ Prefab:
     - target: {fileID: 9500000, guid: a0dfe3666eb347149b9b0cac91a1d455, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4a99782486be0ec49a2ee0369f322900, type: 2}
+      objectReference: {fileID: 9100000, guid: 8805dfceae4c71e4982594194fc69959, type: 2}
     - target: {fileID: 100026, guid: a0dfe3666eb347149b9b0cac91a1d455, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 777964133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d4393bd7f25f748986bb348148c046, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f6cc1e0ddfda043babe75a8397d2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
@@ -708,7 +708,9 @@ MonoBehaviour:
   gamecam: {fileID: 965372350}
   directionSpeed: 3
   rotationDegreePerSecond: 120
-  turnSmoothing: 12
+  turnSmoothing: 3
+  jumpSpeed: 25000
+  groundDist: .0500000007
 --- !u!54 &777964136
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -747,7 +749,7 @@ Animator:
   m_GameObject: {fileID: 777964133}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a0dfe3666eb347149b9b0cac91a1d455, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4a99782486be0ec49a2ee0369f322900, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8805dfceae4c71e4982594194fc69959, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -853,7 +855,7 @@ MonoBehaviour:
   distanceUp: 1.14999998
   smooth: 3
   followXForm: {fileID: 0}
-  character: {fileID: 0}
+  character: {fileID: 777964135}
   offset: {x: 0, y: .779999971, z: 0}
   camSmoothDampTime: .300000012
   lookDirDampTime: .100000001

@@ -27,12 +27,12 @@ public class ThirdPersonCamera : MonoBehaviour {
 	[SerializeField]
 	private float lookDirDampTime;
 
-	private CameraStates cameraState = CameraStates.Behind;
-
 	public enum CameraStates {
 		Behind,
 		Free
 	}
+
+	private CameraStates cameraState = CameraStates.Behind;
 
 	// Use this for initialization
 	void Start () {
@@ -40,7 +40,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		//if(character == null)
 	///		Debug.Log ("CHAR IS NULL ");
 		//followXForm = GameObject.FindWithTag("Player").transform;
-		followXForm = character.transform;
+		//followXForm = character.transform;
 		lookDir = followXForm.forward;
 	}
 	

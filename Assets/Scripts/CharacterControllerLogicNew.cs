@@ -103,7 +103,7 @@ public class CharacterControllerLogicNew : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (animator) {
-			//stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+			stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
 			//check if we need to change state:
 			if(IsClimbing()) {

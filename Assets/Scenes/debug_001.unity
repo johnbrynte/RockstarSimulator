@@ -2015,6 +2015,7 @@ Transform:
   m_Children:
   - {fileID: 1260643111}
   - {fileID: 659236235}
+  - {fileID: 2145793346}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &777964135
@@ -2033,7 +2034,7 @@ MonoBehaviour:
   gamecam: {fileID: 965372350}
   directionSpeed: 3
   rotationDegreePerSecond: 120
-  turnSmoothing: 3
+  turnSmoothing: 9
   jumpSpeed: 25000
   climbSpeed: 5
   groundDist: .0500000007
@@ -2062,7 +2063,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 8807a7d97971734408d2dea27600b2c7, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
+  m_Radius: .300000012
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: .949999988, z: 0}
@@ -2545,7 +2546,7 @@ MonoBehaviour:
   distanceAway: 5
   distanceUp: 1.14999998
   smooth: 3
-  followXForm: {fileID: 0}
+  followXForm: {fileID: 2145793346}
   character: {fileID: 777964135}
   offset: {x: 0, y: .779999971, z: 0}
   camSmoothDampTime: .300000012
@@ -4693,3 +4694,30 @@ Transform:
   - {fileID: 11205564}
   m_Father: {fileID: 1268393995}
   m_RootOrder: 0
+--- !u!1 &2145793345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2145793346}
+  m_Layer: 0
+  m_Name: follow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2145793346
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145793345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 777964134}
+  m_RootOrder: 2

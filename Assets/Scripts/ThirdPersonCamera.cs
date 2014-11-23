@@ -15,10 +15,20 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private CharacterControllerLogicNew character;
 	[SerializeField]
 	private Vector3 offset = Vector3.zero;
+	
+	public float distanceAwayMultiplier = 1.5f;
+	public float distanceUpMultiplier = 5f;
+	public float freeThreshold = .1f;
+	public Vector2 camMinDistFromChar = new Vector2 (1f, -.5f);
+	public float rightStickThreshold = .1f;
+	public float freeRotationDegreePerSecond = 5f;
+    public float zoomSpeed = .4f;
 
+    private Transform parentRig;
 	private Vector3 lookDir;
 	private Vector3 curLookDir;
 	private Vector3 targetPosition;
+    private float prevZoom = 0f;
 
 	private Vector3 velocityCamSmooth = Vector3.zero;
 	[SerializeField]
@@ -26,6 +36,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 	private Vector3 velocityLookDir = Vector3.zero;
 	[SerializeField]
 	private float lookDirDampTime;
+
+	private Vector3 savedRigToGoal;
+	private float distanceAwayFree;
+	private float distanceUpFree;
+	private Vector2 rightStickPrevFrame = Vector2.zero;
 
 	public enum CameraStates {
 		Behind,
@@ -41,7 +56,10 @@ public class ThirdPersonCamera : MonoBehaviour {
 	///		Debug.Log ("CHAR IS NULL ");
 		//followXForm = GameObject.FindWithTag("Player").transform;
 		//followXForm = character.transform;
-		lookDir = followXForm.forward;
+        parentRig = this.transform.parent;
+		curLookDir = followXForm.forward;
+        distanceAwayFree = distanceAway;
+        distanceUpFree = distanceUp;
 	}
 	
 	// Update is called once per frame
@@ -52,10 +70,18 @@ public class ThirdPersonCamera : MonoBehaviour {
 	void LateUpdate () {
 		float leftX = Input.GetAxis("Horizontal");
 		float leftY = Input.GetAxis("Vertical");
-		//float rightX = Input.GetAxis("RightStickX");
-		//float rightY = Input.GetAxis("RightStickY");
+		float rightX = Input.GetAxis("RightStickX");
+		float rightY = Input.GetAxis("RightStickY");
 
 		Vector3 characterOffset = followXForm.position + offset;
+		targetPosition = Vector3.zero;
+
+		if (Mathf.Abs(rightX) > freeThreshold || Mathf.Abs(rightY) > freeThreshold) {
+			cameraState = CameraStates.Free;
+			savedRigToGoal = Vector3.zero;
+		} else {
+            cameraState = CameraStates.Behind;
+        }
 
 		switch (cameraState) {
 			case CameraStates.Behind:
@@ -67,23 +93,62 @@ public class ThirdPersonCamera : MonoBehaviour {
 					lookDir.Normalize();
 
 					curLookDir = Vector3.SmoothDamp(curLookDir, lookDir, ref velocityLookDir, lookDirDampTime);
+                    curLookDir.Normalize();
 				}
+                // move to the target position behind the character
+                targetPosition = characterOffset + followXForm.up * distanceUpFree - curLookDir * distanceAwayFree;
 				break;
 			case CameraStates.Free:
+				Vector3 rigToGoalDirection = Vector3.Normalize(characterOffset - this.transform.position);
+				rigToGoalDirection.y = 0f;
+                Vector3 rigToGoal = characterOffset - parentRig.position;
+                rigToGoal.y = 0f;
+
+                if (rightY < -rightStickThreshold && rightY <= rightStickPrevFrame.y)
+                {
+                    distanceUpFree = Mathf.Lerp(Mathf.Abs(this.transform.position.y - characterOffset.y), distanceUp * distanceUpMultiplier, Mathf.Abs(rightY) * zoomSpeed);
+                    distanceAwayFree = Mathf.Lerp(rigToGoal.magnitude, distanceAway * distanceAwayMultiplier, Mathf.Abs(rightY) * zoomSpeed);
+                    targetPosition = characterOffset + followXForm.up * distanceUpFree - rigToGoalDirection * distanceAwayFree;
+                }
+                else if(rightY > rightStickThreshold && rightY >= rightStickPrevFrame.y)
+                {
+                    distanceUpFree = Mathf.Lerp(Mathf.Abs(this.transform.position.y - characterOffset.y), camMinDistFromChar.y, rightY * zoomSpeed);
+                    distanceAwayFree = Mathf.Lerp(rigToGoal.magnitude, camMinDistFromChar.x, rightY * zoomSpeed);
+                    targetPosition = characterOffset + followXForm.up * distanceUpFree - rigToGoalDirection * distanceAwayFree;
+                }
+
+                if (rightX != 0 || rightY != 0)
+                {
+                    savedRigToGoal = rigToGoalDirection;
+                }
+
+                parentRig.RotateAround(characterOffset, followXForm.up, freeRotationDegreePerSecond * (Mathf.Abs(rightX) > rightStickThreshold ? rightX : 0f));
+
+                if (targetPosition == Vector3.zero) {
+                    targetPosition = characterOffset + followXForm.up * distanceUpFree - savedRigToGoal * distanceAwayFree;
+                }
+
+                curLookDir = parentRig.rotation * Vector3.forward;
+
+                SmoothPosition(parentRig.position, targetPosition);
+                this.transform.LookAt(characterOffset);
 				break;
 		}
 
-		// move to the target position behind the character
-		targetPosition = characterOffset + followXForm.up * distanceUp - lookDir * distanceAway;
+        if (cameraState != CameraStates.Free)
+        {
+    		CompensateForWalls(characterOffset, ref targetPosition);
+    		SmoothPosition(parentRig.position, targetPosition);
+    		this.transform.LookAt(characterOffset);
+        }
 
-		CompensateForWalls(characterOffset, ref targetPosition);
-		SmoothPosition(this.transform.position, targetPosition);
-		transform.LookAt(characterOffset);
+        rightStickPrevFrame.x = rightX;
+        rightStickPrevFrame.y = rightY;
 	}
 
 	private void SmoothPosition(Vector3 fromPos, Vector3 toPos) {
 		// smooth camera position transition
-		this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmooth, camSmoothDampTime);
+		parentRig.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmooth, camSmoothDampTime);
 	}
 
 	private void CompensateForWalls(Vector3 fromPos, ref Vector3 toPos) {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThirdPersonCamera : MonoBehaviour {
+public class ThirdPersonCameraOld : MonoBehaviour {
 
 	[SerializeField]
 	private float distanceAway;
@@ -12,7 +12,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	[SerializeField]
 	private Transform followXForm;
 	[SerializeField]
-	private CharacterControllerLogic character;
+	private CharacterControllerLogicOld character;
 	[SerializeField]
 	private Vector3 offset = Vector3.zero;
 	
@@ -23,13 +23,11 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public float rightStickThreshold = .1f;
 	public float freeRotationDegreePerSecond = 5f;
     public float zoomSpeed = .4f;
-    public float targetSmoothing = 0.2f;
 
     private Transform parentRig;
 	private Vector3 lookDir;
 	private Vector3 curLookDir;
 	private Vector3 targetPosition;
-    private Vector3 characterOffset;
     private float prevZoom = 0f;
 
 	private Vector3 velocityCamSmooth = Vector3.zero;
@@ -53,11 +51,15 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//character = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogicNew>();
+		//if(character == null)
+	///		Debug.Log ("CHAR IS NULL ");
+		//followXForm = GameObject.FindWithTag("Player").transform;
+		//followXForm = character.transform;
         parentRig = this.transform.parent;
 		curLookDir = followXForm.forward;
         distanceAwayFree = distanceAway;
         distanceUpFree = distanceUp;
-        characterOffset = followXForm.position + offset;
 	}
 	
 	// Update is called once per frame
@@ -65,13 +67,13 @@ public class ThirdPersonCamera : MonoBehaviour {
 	
 	}
 
-	void FixedUpdate () {
+	void LateUpdate () {
 		float leftX = Input.GetAxis("Horizontal");
 		float leftY = Input.GetAxis("Vertical");
 		float rightX = Input.GetAxis("RightStickX");
 		float rightY = Input.GetAxis("RightStickY");
 
-		characterOffset = Vector3.Lerp(characterOffset, followXForm.position + offset, targetSmoothing);
+		Vector3 characterOffset = followXForm.position + offset;
 		targetPosition = Vector3.zero;
 
 		if (Mathf.Abs(rightX) > freeThreshold || Mathf.Abs(rightY) > freeThreshold) {
@@ -83,7 +85,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 		switch (cameraState) {
 			case CameraStates.Behind:
-				if (character.IsInLocomotion()) {
+				if (character.IsInLocomotion() && character.Speed > character.LocomotionThreshold) {
 					lookDir = Vector3.Lerp(followXForm.right * (leftX < 0 ? 1f : -1f), followXForm.forward * (leftY < 0 ? -1f : 11f), Mathf.Abs(Vector3.Dot(this.transform.forward, followXForm.forward)));
 
 					lookDir = characterOffset - this.transform.position;

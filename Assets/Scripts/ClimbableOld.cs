@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Climbable : MonoBehaviour {
+public class ClimbableOld : MonoBehaviour {
 
-	public CharacterControllerLogic player;
+	public CharacterControllerLogicOld player;
 	private bool hasEntered = false;	
 
 	void Start () {
-		player = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogic>();
+		player = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogicOld>();
 		if(player == null)
 				Debug.Log ("CHAR IS NULL ");
 		//followXForm = GameObject.FindWithTag("Player").transform;
@@ -17,14 +17,14 @@ public class Climbable : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.Equals (this.player.collider) && !hasEntered) {
-			player.setClimbMode(true);
+			player.setClibmMode(true);
 			hasEntered = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.Equals (this.player.collider)) {
-			player.setClimbMode(false);
+			player.setClibmMode(false);
 			hasEntered = false;
 		}
 	}

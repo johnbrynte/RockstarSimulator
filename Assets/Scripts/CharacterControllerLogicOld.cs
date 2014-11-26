@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterControllerLogicNew : MonoBehaviour {
+public class CharacterControllerLogicOld : MonoBehaviour {
 	
 	[SerializeField]
 	private Animator animator;

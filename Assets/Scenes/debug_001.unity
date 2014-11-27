@@ -1481,6 +1481,7 @@ MonoBehaviour:
   jumpMomentumSpeed: .600000024
   climbSpeed: 4
   gamecam: {fileID: 222924898}
+  playerModel: {fileID: 0}
 --- !u!54 &551167633
 Rigidbody:
   m_ObjectHideFlags: 0

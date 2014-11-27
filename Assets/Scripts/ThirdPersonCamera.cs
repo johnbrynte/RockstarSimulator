@@ -134,7 +134,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
         if (cameraState != CameraStates.Free)
         {
-    		CompensateForWalls(characterOffset, ref targetPosition);
+    		//CompensateForWalls(characterOffset, ref targetPosition);
     		SmoothCameraPosition(targetPosition);
     		this.transform.LookAt(characterOffset);
         }

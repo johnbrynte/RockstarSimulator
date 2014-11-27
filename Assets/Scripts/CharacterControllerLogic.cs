@@ -20,6 +20,7 @@ public class CharacterControllerLogic : MonoBehaviour {
     public float climbSpeed = 4f;
 
     public ThirdPersonCamera gamecam;
+    public GameObject playerModel;
 
     private bool grounded = false;
     private bool airbound = false;
@@ -33,7 +34,6 @@ public class CharacterControllerLogic : MonoBehaviour {
 
     private Quaternion currentRotation;
     private CapsuleCollider capsule;
-    private GameObject playerModel;
     private GameObject dummy;
     private Animator animator;
 
@@ -44,17 +44,13 @@ public class CharacterControllerLogic : MonoBehaviour {
         capsule = GetComponent<CapsuleCollider>();
         foreach (Transform child in transform)
         {
-            if (child.gameObject.tag == "Player")
-            {
-                playerModel = child.gameObject;
-                animator = playerModel.GetComponent<Animator>();
-            }
-            else if (child.gameObject.tag == "Dummy")
+            if (child.gameObject.tag == "Dummy")
             {
                 dummy = child.gameObject;
             }
         }
 
+        animator = playerModel.GetComponent<Animator>();
         animator.SetFloat("HorizontalSpeed", 0);
         animator.SetBool("IsInAir", false);
     }
@@ -172,8 +168,8 @@ public class CharacterControllerLogic : MonoBehaviour {
     // Unparent if we are no longer standing on our parent
     void OnCollisionExit(Collision collision)
     {
-        if (collision.transform == transform.parent)
-            transform.parent = null;
+        //if (collision.transform == transform.parent)
+        //    transform.parent = null;
     }
 
     // If there are collisions check if the character is grounded
@@ -253,12 +249,12 @@ public class CharacterControllerLogic : MonoBehaviour {
                 {
                     // Get the ground velocity and we parent to it
                     groundVelocity = collision.rigidbody.velocity;
-                    transform.parent = collision.transform;
+                    //transform.parent = collision.transform;
                 }
                 else if (isStatic(collision))
                 {
                     // Just parent to it since it's static
-                    transform.parent = collision.transform;
+                    //transform.parent = collision.transform;
                 }
                 else
                 {

@@ -23,7 +23,6 @@ public class ThirdPersonCamera : MonoBehaviour {
 	public float rightStickThreshold = .1f;
 	public float freeRotationDegreePerSecond = 5f;
     public float zoomSpeed = .4f;
-    public float targetSmoothing = 0.2f;
 
     private Transform parentRig;
 	private Vector3 lookDir;
@@ -71,7 +70,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 		float rightX = Input.GetAxis("RightStickX");
 		float rightY = Input.GetAxis("RightStickY");
 
-		characterOffset = Vector3.Lerp(characterOffset, followXForm.position + offset, targetSmoothing);
+		characterOffset = followXForm.position + offset;//Vector3.Lerp(characterOffset, followXForm.position + offset, targetSmoothing);
 		targetPosition = Vector3.zero;
 
 		if (Mathf.Abs(rightX) > freeThreshold || Mathf.Abs(rightY) > freeThreshold) {
@@ -92,7 +91,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
 					curLookDir = Vector3.SmoothDamp(curLookDir, lookDir, ref velocityLookDir, lookDirDampTime);
                     curLookDir.Normalize();
-				}
+                }
                 // move to the target position behind the character
                 targetPosition = characterOffset + followXForm.up * distanceUpFree - curLookDir * distanceAwayFree;
 				break;
@@ -128,7 +127,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 
                 curLookDir = parentRig.rotation * Vector3.forward;
 
-                SmoothPosition(parentRig.position, targetPosition);
+                SmoothCameraPosition(targetPosition);
                 this.transform.LookAt(characterOffset);
 				break;
 		}
@@ -136,23 +135,26 @@ public class ThirdPersonCamera : MonoBehaviour {
         if (cameraState != CameraStates.Free)
         {
     		CompensateForWalls(characterOffset, ref targetPosition);
-    		SmoothPosition(parentRig.position, targetPosition);
+    		SmoothCameraPosition(targetPosition);
     		this.transform.LookAt(characterOffset);
         }
 
         rightStickPrevFrame.x = rightX;
         rightStickPrevFrame.y = rightY;
 	}
-
-	private void SmoothPosition(Vector3 fromPos, Vector3 toPos) {
+    
+	private void SmoothCameraPosition(Vector3 toPos) {
+        parentRig.position = Vector3.Lerp(parentRig.position, toPos, camSmoothDampTime);
 		// smooth camera position transition
-		parentRig.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmooth, camSmoothDampTime);
+		//parentRig.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmooth, camSmoothDampTime);
 	}
 
 	private void CompensateForWalls(Vector3 fromPos, ref Vector3 toPos) {
 		RaycastHit wallHit = new RaycastHit();
 		if (Physics.Linecast(fromPos, toPos, out wallHit)) {
-			toPos = new Vector3(wallHit.point.x, toPos.y, wallHit.point.z);
+            // avoid the player (should probably use a layer mask)
+            if (wallHit.collider != character.GetComponent<CapsuleCollider>())
+    			toPos = new Vector3(wallHit.point.x, toPos.y, wallHit.point.z);
 		}
 	}
 

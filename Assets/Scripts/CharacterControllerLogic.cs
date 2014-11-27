@@ -17,20 +17,25 @@ public class CharacterControllerLogic : MonoBehaviour {
     public float slowDownSmoothing = 0.2f;
     public float dummyOffsetSmoothing = 0.2f;
     public float jumpMomentumSpeed = 0.8f;
+    public float climbSpeed = 4f;
 
     public ThirdPersonCamera gamecam;
 
     private bool grounded = false;
     private bool airbound = false;
+    private bool climbing = false;
     private float speed = 0;
+    
     private Vector3 jumpMomentum;
     private Vector3 currentDirection = Vector3.zero;
     private Vector3 groundVelocity;
     private Vector3 groundPosition;
+
     private Quaternion currentRotation;
     private CapsuleCollider capsule;
     private GameObject playerModel;
     private GameObject dummy;
+    private Animator animator;
 
     private bool jumpFlag = false;
 
@@ -40,10 +45,18 @@ public class CharacterControllerLogic : MonoBehaviour {
         foreach (Transform child in transform)
         {
             if (child.gameObject.tag == "Player")
+            {
                 playerModel = child.gameObject;
+                animator = playerModel.GetComponent<Animator>();
+            }
             else if (child.gameObject.tag == "Dummy")
+            {
                 dummy = child.gameObject;
+            }
         }
+
+        animator.SetFloat("HorizontalSpeed", 0);
+        animator.SetBool("IsInAir", false);
     }
 
     // Update is called once per frame
@@ -52,13 +65,46 @@ public class CharacterControllerLogic : MonoBehaviour {
             jumpFlag = true;
         else
             jumpFlag = false;
+
+        if (!grounded && !climbing)
+        {
+            // limit the position of the dummy (camera target point) when jumping/falling
+            // NOTE: this get erroneous values if done in FixedUpdate
+            Vector3 groundOffset = new Vector3(0, this.transform.position.y - groundPosition.y, 0);
+            if (groundOffset.y < 0)
+                groundOffset.y = 0;
+            groundOffset.y = -groundOffset.y * dummyJumpOffset;
+            dummy.transform.localPosition = groundOffset;
+
+            animator.SetBool("IsInAir", true);
+            airbound = true;
+        }
     }
 
     // Update for physics
     void FixedUpdate() {
         Vector2 inputLeftStick = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        speed = inputLeftStick.sqrMagnitude;
+        if (climbing)
+        {
+            speed = 0;
+            rigidbody.velocity = Vector3.zero;
+
+            if (grounded && inputLeftStick.y < 0) {
+                setClimbMode(false);
+            } else {
+                Vector3 trans = new Vector3(0, inputLeftStick.y*climbSpeed*Time.deltaTime, 0);
+                transform.Translate(trans);
+            }
+        }
+        else
+        {
+            speed = inputLeftStick.sqrMagnitude;
+            // apply simulated gravity
+            rigidbody.AddForce(-Vector3.up*simulatedGravity);
+        }
+
+        animator.SetFloat("HorizontalSpeed", speed);
 
         if (speed > 0.1)
         {
@@ -87,15 +133,12 @@ public class CharacterControllerLogic : MonoBehaviour {
             rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, new Vector3(0, rigidbody.velocity.y, 0), slowDownSmoothing);
         }
 
-        // apply simulated gravity
-        rigidbody.AddForce(-Vector3.up*simulatedGravity);
-
-        if (grounded)
+        if (!climbing && grounded)
         {
             if (airbound)
             {
-                Debug.Log("touch down");
                 groundPosition = this.transform.position;
+                animator.SetBool("IsInAir", false);
                 airbound = false;
             }
 
@@ -114,14 +157,15 @@ public class CharacterControllerLogic : MonoBehaviour {
         }
         else
         {
-            // limit the position of the dummy (camera target point) when jumping/falling
-            Vector3 groundOffset = new Vector3(0, this.transform.position.y - groundPosition.y, 0);
-            if (groundOffset.y < 0)
-                groundOffset.y = 0;
-            groundOffset.y = -groundOffset.y * dummyJumpOffset;
-            dummy.transform.localPosition = groundOffset;
-
-            airbound = true;
+            RaycastHit rayhit;
+            if(rigidbody.velocity.y < 0 && Physics.Raycast(this.transform.position, Vector3.down, out rayhit)) {
+                if(rayhit.distance <= Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime)
+                {
+                    Debug.Log("Hit floor: " + rayhit.distance + " : " + Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime);
+                    rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
+                    grounded = true;
+                }
+            }
         }
     }
 
@@ -148,9 +192,13 @@ public class CharacterControllerLogic : MonoBehaviour {
         return speed > 0.1;
     }
 
-    public void setClimbMode(bool climbMode)
+    public void setClimbMode(bool climbing)
     {
-        // TODO
+        this.climbing = climbing;
+        animator.SetBool("Climbing", climbing);
+        grounded = !climbing;
+        animator.SetBool("IsInAir", grounded);
+        rigidbody.velocity = Vector3.zero;
     }
 
     private void StickToWorldspace (Transform root, Transform camera, Vector2 inputStick, ref Vector3 directionOut) {

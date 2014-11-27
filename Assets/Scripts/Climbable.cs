@@ -7,7 +7,7 @@ public class Climbable : MonoBehaviour {
 	private bool hasEntered = false;	
 
 	void Start () {
-		player = GameObject.FindWithTag("Player").GetComponent<CharacterControllerLogic>();
+		player = GameObject.FindWithTag("PlayerBody").GetComponent<CharacterControllerLogic>();
 		if(player == null)
 				Debug.Log ("CHAR IS NULL ");
 		//followXForm = GameObject.FindWithTag("Player").transform;

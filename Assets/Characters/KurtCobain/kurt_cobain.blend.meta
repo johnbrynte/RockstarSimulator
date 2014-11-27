@@ -65,6 +65,10 @@ ModelImporter:
     400058: upperleg_r
     4300000: Kurt_Cobain
     7400000: Default Take
+    7400002: Idle
+    7400004: Climb
+    7400006: Run
+    7400008: Jump
     9500000: //RootNode
     13700000: Kurt_Cobain
   materials:
@@ -82,7 +86,351 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 1
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/spine
+        weight: 1
+      - path: Armature/hip/spine/chest
+        weight: 1
+      - path: Armature/hip/spine/chest/neck
+        weight: 1
+      - path: Armature/hip/spine/chest/neck/head
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l/finger2_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/thumb_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r/finger2_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r/toe_r
+        weight: 1
+      - path: Kurt_Cobain
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Climb
+      takeName: Climb
+      firstFrame: 48
+      lastFrame: 71
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/spine
+        weight: 1
+      - path: Armature/hip/spine/chest
+        weight: 1
+      - path: Armature/hip/spine/chest/neck
+        weight: 1
+      - path: Armature/hip/spine/chest/neck/head
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l/finger2_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/thumb_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r/finger2_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r/toe_r
+        weight: 1
+      - path: Kurt_Cobain
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: Idle
+      firstFrame: 72
+      lastFrame: 96
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/spine
+        weight: 1
+      - path: Armature/hip/spine/chest
+        weight: 1
+      - path: Armature/hip/spine/chest/neck
+        weight: 1
+      - path: Armature/hip/spine/chest/neck/head
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l/finger2_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/thumb_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r/finger2_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r/toe_r
+        weight: 1
+      - path: Kurt_Cobain
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: Idle
+      firstFrame: 78
+      lastFrame: 78.0999985
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hip
+        weight: 1
+      - path: Armature/hip/spine
+        weight: 1
+      - path: Armature/hip/spine/chest
+        weight: 1
+      - path: Armature/hip/spine/chest/neck
+        weight: 1
+      - path: Armature/hip/spine/chest/neck/head
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/finger1_l/finger2_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_l/upperarm_l/lowerarm_l/hand_l/thumb_l
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/finger1_r/finger2_r
+        weight: 1
+      - path: Armature/hip/spine/chest/shoulder_r/upperarm_r/lowerarm_r/hand_r/thumb_r
+        weight: 1
+      - path: Armature/hip/upperleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l
+        weight: 1
+      - path: Armature/hip/upperleg_l/lowerleg_l/foot_l/toe_l
+        weight: 1
+      - path: Armature/hip/upperleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r
+        weight: 1
+      - path: Armature/hip/upperleg_r/lowerleg_r/foot_r/toe_r
+        weight: 1
+      - path: Kurt_Cobain
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

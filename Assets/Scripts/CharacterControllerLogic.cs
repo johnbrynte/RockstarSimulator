@@ -22,6 +22,8 @@ public class CharacterControllerLogic : MonoBehaviour {
     public ThirdPersonCamera gamecam;
     public GameObject playerModel;
 
+	private GuitarLogic weapon;
+
     private bool grounded = false;
     private bool airbound = false;
     private bool climbing = false;
@@ -38,6 +40,7 @@ public class CharacterControllerLogic : MonoBehaviour {
     private Animator animator;
 
     private bool jumpFlag = false;
+	private bool attackFlag = false;
 
     // Use this for initialization
     void Start () {
@@ -61,6 +64,12 @@ public class CharacterControllerLogic : MonoBehaviour {
             jumpFlag = true;
         else
             jumpFlag = false;
+
+		if(Input.GetButton("Fire1")) {
+			attackFlag = true;
+		} else {
+			attackFlag = false;
+		}
 
         if (!grounded && !climbing)
         {
@@ -163,6 +172,13 @@ public class CharacterControllerLogic : MonoBehaviour {
                 }
             }
         }
+
+		if (attackFlag && !climbing) {
+			if(weapon) {
+				weapon.Attack();
+			}
+		}
+
     }
 
     // Unparent if we are no longer standing on our parent
@@ -272,6 +288,14 @@ public class CharacterControllerLogic : MonoBehaviour {
             break;
         }
     }
+
+	//public void aquireGuitar(GuitarLogic guitar) {
+	//	this.weapon = guitar;
+	//}
+
+	public void setWeapon(GuitarLogic guitar) {
+		this.weapon = guitar;
+	}
 
     private bool isKinematic(Collision collision)
     {

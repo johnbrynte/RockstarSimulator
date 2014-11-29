@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: 521ce5a13a642ca4d8fa3a58d014e803
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Cloner
+    100002: //RootNode
+    100004: Enviroment_Reflection_Image_click_in_house___
+    100006: Guitar
+    100008: Null
+    100010: Null_2
+    100012: Plane
+    100014: Plane_0
+    100016: Plane_1
+    100018: Plane_2
+    100020: Plane_3
+    100022: Plane_4
+    100024: Plane_5
+    100026: Plane_6
+    100028: Plane_7
+    100030: Plane_8
+    400000: Cloner
+    400002: //RootNode
+    400004: Enviroment_Reflection_Image_click_in_house___
+    400006: Guitar
+    400008: Null
+    400010: Null_2
+    400012: Plane
+    400014: Plane_0
+    400016: Plane_1
+    400018: Plane_2
+    400020: Plane_3
+    400022: Plane_4
+    400024: Plane_5
+    400026: Plane_6
+    400028: Plane_7
+    400030: Plane_8
+    2300000: Guitar
+    2300002: Plane_0
+    2300004: Plane_1
+    2300006: Plane_2
+    2300008: Plane_3
+    2300010: Plane_4
+    2300012: Plane_5
+    2300014: Plane_6
+    2300016: Plane_7
+    2300018: Plane_8
+    3300000: Guitar
+    3300002: Plane_0
+    3300004: Plane_1
+    3300006: Plane_2
+    3300008: Plane_3
+    3300010: Plane_4
+    3300012: Plane_5
+    3300014: Plane_6
+    3300016: Plane_7
+    3300018: Plane_8
+    4300000: Plane_0
+    4300002: Plane_1
+    4300004: Plane_2
+    4300006: Plane_3
+    4300008: Plane_4
+    4300010: Plane_5
+    4300012: Plane_6
+    4300014: Plane_7
+    4300016: Plane_8
+    4300018: Guitar
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

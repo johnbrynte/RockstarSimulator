@@ -25,3 +25,7 @@ function Update() {
 	}
 
 }
+
+function GotHit() {
+	//TODO
+}

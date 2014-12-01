@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
-function OnTriggerEnter() {
-	Application.LoadLevel("game_over");
+function OnTriggerEnter(collider : Collider) {
+	if (collider.name == 'Body')
+		Application.LoadLevel("game_over");
 }

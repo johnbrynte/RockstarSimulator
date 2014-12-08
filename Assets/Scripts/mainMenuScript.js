@@ -2,6 +2,14 @@
 
 var mainMenuTexture : Texture;
 var mainMenuFont : Font;
+var audioSourceIntro : AudioSource;
+var audioSourceBackground : AudioSource;
+
+private var introPlayed;
+
+function Awake () {
+	introPlayed = false;
+}
  
 function OnGUI() {
 	GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),mainMenuTexture);
@@ -11,6 +19,15 @@ function OnGUI() {
 	
 	GUI.skin.button.font = mainMenuFont;
 	GUI.skin.button.fontSize = 26;
+	
+	if (!audioSourceIntro.isPlaying && !introPlayed) {
+		audioSourceIntro.Play();
+		introPlayed = true;
+	}
+	
+	if (!audioSourceIntro.isPlaying && !audioSourceBackground.isPlaying && introPlayed) {
+		audioSourceBackground.Play();
+	}
 	
 	if (GUI.Button(new Rect(xPos, yPos , 250, 50),"Start game")) 
 	{

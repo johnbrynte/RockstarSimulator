@@ -39648,7 +39648,6 @@ Transform:
   m_Children:
   - {fileID: 1816304035}
   - {fileID: 1567527013}
-  - {fileID: 1824190836}
   m_Father: {fileID: 536892742}
   m_RootOrder: 0
 --- !u!1 &1002525902
@@ -62092,7 +62091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infiniteAttacks: 1
   attacksLeft: 10
-  attackCooldown: .5
+  attackCooldown: 1.79999995
   playerSpine: {fileID: 1001717534}
   playerLogic: {fileID: 860416880}
   startsOnPlayer: 1
@@ -62109,8 +62108,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.62025332, y: .406781256, z: 7.03857899}
-  m_Center: {x: .0139947822, y: -.155494675, z: -1.64388561}
+  m_Size: {x: 5.67321634, y: 3.16528845, z: 10.2245989}
+  m_Center: {x: .048042614, y: .198636159, z: -.550024927}
 --- !u!1 &1569353311
 GameObject:
   m_ObjectHideFlags: 0
@@ -73105,11 +73104,11 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 521ce5a13a642ca4d8fa3a58d014e803, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1824190835}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.154695377, y: -.645469427, z: -.453239322}
-  m_LocalScale: {x: .0987770185, y: .130824983, z: .0970300138}
+  m_LocalRotation: {x: .683012724, y: -.183012709, z: -.183012709, w: -.683012724}
+  m_LocalPosition: {x: -.0540000014, y: .354000002, z: -.0520000011}
+  m_LocalScale: {x: .0987770557, y: .130825028, z: .097030066}
   m_Children: []
-  m_Father: {fileID: 1001717534}
+  m_Father: {fileID: 2118956135}
   m_RootOrder: 2
 --- !u!114 &1824190837
 MonoBehaviour:
@@ -85285,6 +85284,7 @@ Transform:
   m_Children:
   - {fileID: 1602446045}
   - {fileID: 780116956}
+  - {fileID: 1824190836}
   m_Father: {fileID: 1445044599}
   m_RootOrder: 0
 --- !u!1001 &2123398046

@@ -69,6 +69,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 			attackFlag = true;
 		} else {
 			attackFlag = false;
+			animator.SetBool("Attacking",false);
 		}
 
         if (!grounded && !climbing)
@@ -175,6 +176,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 
 		if (attackFlag && !climbing) {
 			if(weapon) {
+				animator.SetBool("Attacking",true);
 				weapon.Attack();
 			}
 		}

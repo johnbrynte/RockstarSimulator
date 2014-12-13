@@ -79,13 +79,10 @@ public class GuitarLogic : MonoBehaviour {
 	//}
 
 	void OnTriggerEnter(Collider col) {
-		//Debug.Log ("Collision!");
 
 		if(isCooldown && col.gameObject.CompareTag("Enemy")) {
-			//Debug.Log ("Hit!");
-			//col.gameObject.GetComponent<EnemyMovementCS>().GotHit();
-			EnemyMovementCS enemy = col.gameObject.GetComponent<EnemyMovementCS>();
-			enemy.GotHit();
+			EnemyModelScript enemy = col.gameObject.GetComponent<EnemyModelScript>();
+			enemy.GotHit(this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*25000);
 			if(!infiniteAttacks) {
 				attacksLeft -= 1;
 				if(attacksLeft <= 0) {

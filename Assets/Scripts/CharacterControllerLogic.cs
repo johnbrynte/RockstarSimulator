@@ -33,6 +33,7 @@ public class CharacterControllerLogic : MonoBehaviour {
     private Vector3 currentDirection = Vector3.zero;
     private Vector3 groundVelocity;
     private Vector3 groundPosition;
+    private Vector3 lastDirection = Vector3.zero;
 
     private Quaternion currentRotation;
     private CapsuleCollider capsule;
@@ -116,7 +117,7 @@ public class CharacterControllerLogic : MonoBehaviour {
         {
             UpdateMovingPhysics(inputLeftStick);
         }
-        else if (grounded) //standing still on ground
+        else if (grounded)
         {
             rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, new Vector3(0, rigidbody.velocity.y, 0), slowDownSmoothing);
         }
@@ -211,6 +212,9 @@ public class CharacterControllerLogic : MonoBehaviour {
         // move the player
         Vector3 velocityChange = CalculateVelocityChange(currentDirection);
         rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+
+        lastDirection = rigidbody.velocity;
+        lastDirection.Normalize();
     }
 
     // Unparent if we are no longer standing on our parent
@@ -305,7 +309,7 @@ public class CharacterControllerLogic : MonoBehaviour {
     // Check if the base of the capsule is colliding to track if it's grounded
     private void TrackGrounded(Collision collision)
     {
-        float maxHeight = capsule.bounds.min.y + capsule.radius * .9f; // magic number?
+        float maxHeight = capsule.bounds.min.y + capsule.radius * .9f; 
         foreach (ContactPoint contact in collision.contacts)
         {
             if (contact.point.y < maxHeight)
@@ -336,6 +340,14 @@ public class CharacterControllerLogic : MonoBehaviour {
 
             break;
         }
+    }
+
+
+    public Vector3 GetDirection() {
+        return lastDirection;
+    }
+    public Vector3 GetVelocity() {
+        return rigidbody.velocity;
     }
 
 	//public void aquireGuitar(GuitarLogic guitar) {

@@ -25,12 +25,15 @@ public class EnemyModelScript : MonoBehaviour {
 		
 	}
 
+	// Should not be here, but cant be in movement cause they are attached to different things. This is what we can get from the collision detection AFAIK /peter
+	public void GotHit(Vector3 force) {
+		rigidbody.AddForce(force);
+	}
+
 	void FixedUpdate () {
 		Vector3 direction = enemyAgent.transform.position - transform.position;
 		direction.y = 0;
 		direction.Normalize();
-		//rigidbody.AddForce(direction * 100);
-
 		//Distance check to agent
 		float distance = Vector3.Distance(transform.position, enemyAgent.transform.position);
 		if (distance > minDistance) {

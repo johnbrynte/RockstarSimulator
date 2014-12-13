@@ -98,20 +98,11 @@ public class CharacterControllerLogic : MonoBehaviour {
 
         if (climbing)
         {
-            speed = 0;
-            rigidbody.velocity = Vector3.zero;
-
-            if (grounded && inputLeftStick.y < 0) {
-                setClimbMode(false);
-            } else {
-                Vector3 trans = new Vector3(0, inputLeftStick.y*climbSpeed*Time.deltaTime, 0);
-                transform.Translate(trans);
-            }
+            UpdateClimbing(inputLeftStick);
         }
         else
         {
             speed = inputLeftStick.sqrMagnitude;
-            // apply simulated gravity
             rigidbody.AddForce(-Vector3.up*simulatedGravity);
         }
 
@@ -119,66 +110,20 @@ public class CharacterControllerLogic : MonoBehaviour {
 
         if (speed > 0.1)
         {
-            // calculate direction relative to camera
-            Vector3 targetDirection = Vector3.zero;
-            StickToWorldspace(this.transform, gamecam.transform, inputLeftStick, ref targetDirection);
-            currentDirection = Vector3.Lerp(currentDirection, targetDirection, turnSmoothing);
-
-            // rotate the player model
-            Quaternion targetRotation = Quaternion.LookRotation(currentDirection, Vector3.up);
-            currentRotation = Quaternion.Lerp(currentRotation, targetRotation, turnSmoothing);
-            playerModel.transform.rotation = currentRotation;
-            dummy.transform.rotation = currentRotation;
-            
-            // move the player
-            Vector3 velocityChange = CalculateVelocityChange(currentDirection);
-            rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+            UpdateMovingPhysics(inputLeftStick);
         }
-        else if (Mathf.Abs(inputLeftStick.x) > 0.01 || Mathf.Abs(inputLeftStick.y) > 0.01)
-        {
-            // init the direction so it starts immediately in the correct direction
-            StickToWorldspace(this.transform, gamecam.transform, inputLeftStick, ref currentDirection);
-        }
-        else if (grounded)
+        else if (grounded) //standing still on ground
         {
             rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, new Vector3(0, rigidbody.velocity.y, 0), slowDownSmoothing);
         }
 
         if (!climbing && grounded)
         {
-            timeGrounded += Time.deltaTime;
-            if (airbound)
-            {
-                groundPosition = this.transform.position;
-                animator.SetBool("IsInAir", false);
-                airbound = false;
-            } 
-
-            // interpolate to the current ground position
-            dummy.transform.localPosition = Vector3.Lerp(dummy.transform.localPosition, Vector3.zero, dummyOffsetSmoothing);
-
-            if (jumpFlag)
-            {
-                jumpMomentum = rigidbody.velocity*jumpMomentumSpeed;
-                rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y + jumpSpeed, rigidbody.velocity.z);
-                jumpFlag = false;
-            }
-
-            // By setting the grounded to false in every FixedUpdate we avoid checking if the character is not grounded on OnCollisionExit()
-            grounded = false;
+            UpdateGroundedPhysics();
         }
         else
         {
-            RaycastHit rayhit;
-            if(rigidbody.velocity.y < 0 && Physics.Raycast(this.transform.position, Vector3.down, out rayhit)) {
-                if(rayhit.distance <= Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime)
-                {
-                    Debug.Log("Hit floor: " + rayhit.distance + " : " + Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime);
-                    rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
-                    grounded = true;
-                    timeGrounded = 0;
-                }
-            }
+            UpdateInAirPhysics();
         }
 
 		if (attackFlag && !climbing) {
@@ -187,7 +132,78 @@ public class CharacterControllerLogic : MonoBehaviour {
 				weapon.Attack();
 			}
 		}
+    }
 
+    private void Jump() 
+    {
+        jumpMomentum = rigidbody.velocity*jumpMomentumSpeed;
+        rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y + jumpSpeed, rigidbody.velocity.z);
+        jumpFlag = false;
+    }
+
+    private void UpdateGroundedPhysics()
+    {
+        groundPosition = this.transform.position;
+        animator.SetBool("IsInAir", false);
+
+        timeGrounded += Time.deltaTime;
+
+        // interpolate to the current ground position
+        dummy.transform.localPosition = Vector3.Lerp(dummy.transform.localPosition, Vector3.zero, dummyOffsetSmoothing);
+
+        if (jumpFlag)
+        {
+            Jump();
+        }
+
+        // By setting the grounded to false in every FixedUpdate we avoid checking if the character is not grounded on OnCollisionExit()
+        grounded = false;
+    }
+
+    private void UpdateInAirPhysics()
+    {
+        RaycastHit rayhit;
+        bool fallingToGround = rigidbody.velocity.y < 0 && Physics.Raycast(this.transform.position, Vector3.down, out rayhit);
+        if(fallingToGround) {
+            bool hitGround = rayhit.distance <= Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime;
+            if(hitGround)
+            {
+                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
+                grounded = true;
+                timeGrounded = 0;
+            }
+        }
+    }
+
+    private void UpdateClimbing(Vector2 inputLeftStick) 
+    {
+        speed = 0;
+        rigidbody.velocity = Vector3.zero;
+
+        if (grounded && inputLeftStick.y < 0) {
+            setClimbMode(false);
+        } else {
+            Vector3 trans = new Vector3(0, inputLeftStick.y*climbSpeed*Time.deltaTime, 0);
+            transform.Translate(trans);
+        }
+    }
+
+    private void UpdateMovingPhysics(Vector2 inputLeftStick) 
+    {
+        // calculate direction relative to camera
+        Vector3 targetDirection = Vector3.zero;
+        StickToWorldspace(this.transform, gamecam.transform, inputLeftStick, ref targetDirection);
+        currentDirection = Vector3.Lerp(currentDirection, targetDirection, turnSmoothing);
+
+        // rotate the player model
+        Quaternion targetRotation = Quaternion.LookRotation(currentDirection, Vector3.up);
+        currentRotation = Quaternion.Lerp(currentRotation, targetRotation, turnSmoothing);
+        playerModel.transform.rotation = currentRotation;
+        dummy.transform.rotation = currentRotation;
+        
+        // move the player
+        Vector3 velocityChange = CalculateVelocityChange(currentDirection);
+        rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
     }
 
     // Unparent if we are no longer standing on our parent
@@ -239,27 +255,44 @@ public class CharacterControllerLogic : MonoBehaviour {
     // From the user input calculate using the set up speeds the velocity change
     private Vector3 CalculateVelocityChange(Vector3 inputVector)
     {
-        // Calculate how fast we should be moving
-        Vector3 relativeVelocity = transform.TransformDirection(inputVector);
-        relativeVelocity.z *= runSpeed;
-        relativeVelocity.x *= runSpeed;
+        Vector3 relativeVelocity = CalculateMovingVelocity(inputVector);
+
         float maxVelocityChange = groundMaxVelocityChange;
+
         if (!grounded)
         {
-            relativeVelocity.z *= airControl;
-            relativeVelocity.x *= airControl;
-            relativeVelocity += jumpMomentum;
+            relativeVelocity = AdjustVelocityForAirborne(relativeVelocity);
             maxVelocityChange = airMaxVelocityChange;
         }
 
-        // Calcualte the delta velocity
+        return CalculateDeltaVelocity(relativeVelocity, maxVelocityChange);
+    }
+
+    private Vector3 CalculateDeltaVelocity(Vector3 relativeVelocity, float maxVelocityChange)
+    {
         Vector3 currRelativeVelocity = rigidbody.velocity - groundVelocity;
         Vector3 velocityChange = relativeVelocity - currRelativeVelocity;
         velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
         velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
         velocityChange.y = 0;
-
         return velocityChange;
+    }
+
+    private Vector3 AdjustVelocityForAirborne(Vector3 relativeVelocity) 
+    {
+        relativeVelocity.z *= airControl;
+        relativeVelocity.x *= airControl;
+        relativeVelocity += jumpMomentum;
+        return relativeVelocity;
+    }
+
+    private Vector3 CalculateMovingVelocity(Vector3 inputVector) 
+    {
+        Vector3 relativeVelocity = transform.TransformDirection(inputVector);
+        relativeVelocity.z *= runSpeed;
+        relativeVelocity.x *= runSpeed;
+
+        return relativeVelocity;
     }
 
     // Check if the base of the capsule is colliding to track if it's grounded

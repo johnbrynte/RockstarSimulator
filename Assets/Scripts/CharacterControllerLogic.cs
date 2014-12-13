@@ -42,6 +42,9 @@ public class CharacterControllerLogic : MonoBehaviour {
     private bool jumpFlag = false;
 	private bool attackFlag = false;
 
+    private double timeGrounded = 0;
+    private const double jumpDelay = 0.15;
+
     // Use this for initialization
     void Start () {
         capsule = GetComponent<CapsuleCollider>();
@@ -60,10 +63,12 @@ public class CharacterControllerLogic : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetButton("Jump"))
-            jumpFlag = true;
-        else
+        if (Input.GetButton("Jump") && timeGrounded > jumpDelay) {
+            jumpFlag = true; 
+        }
+        else {
             jumpFlag = false;
+        }
 
 		if(Input.GetButton("Fire1")) {
 			attackFlag = true;
@@ -141,12 +146,13 @@ public class CharacterControllerLogic : MonoBehaviour {
 
         if (!climbing && grounded)
         {
+            timeGrounded += Time.deltaTime;
             if (airbound)
             {
                 groundPosition = this.transform.position;
                 animator.SetBool("IsInAir", false);
                 airbound = false;
-            }
+            } 
 
             // interpolate to the current ground position
             dummy.transform.localPosition = Vector3.Lerp(dummy.transform.localPosition, Vector3.zero, dummyOffsetSmoothing);
@@ -170,6 +176,7 @@ public class CharacterControllerLogic : MonoBehaviour {
                     Debug.Log("Hit floor: " + rayhit.distance + " : " + Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime);
                     rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
                     grounded = true;
+                    timeGrounded = 0;
                 }
             }
         }

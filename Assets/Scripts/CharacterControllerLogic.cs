@@ -168,9 +168,8 @@ public class CharacterControllerLogic : MonoBehaviour {
             bool hitGround = rayhit.distance <= Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime;
             if(hitGround)
             {
-                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
-                grounded = true;
                 timeGrounded = 0;
+                UpdateGroundedPhysics();
             }
         }
     }

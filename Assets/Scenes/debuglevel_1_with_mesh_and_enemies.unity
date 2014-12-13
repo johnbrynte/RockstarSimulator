@@ -1023,6 +1023,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1537912203}
@@ -1239,6 +1243,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1988190499}
@@ -1367,6 +1375,118 @@ MeshFilter:
   m_PrefabInternal: {fileID: 740568926}
   m_GameObject: {fileID: 14799342}
   m_Mesh: {fileID: 4300000, guid: cce04a900a5ca4043a13b06e71f0b4ee, type: 3}
+--- !u!1 &16048404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 16048405}
+  - 65: {fileID: 16048407}
+  - 114: {fileID: 16048406}
+  - 82: {fileID: 16048408}
+  m_Layer: 0
+  m_Name: attack_hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &16048405
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16048404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: .75, z: .340000153}
+  m_LocalScale: {x: 1, y: 1.45000005, z: .639999986}
+  m_Children: []
+  m_Father: {fileID: 1191201381}
+  m_RootOrder: 2
+--- !u!114 &16048406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16048404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa873173fa5a8b4ebd5a5b8a71dbb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackVelocity: 10
+--- !u!65 &16048407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16048404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &16048408
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16048404}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 2a3d5daa0251f9c4198e17b6f2c07a78, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &20250853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1670,7 @@ GameObject:
   - 4: {fileID: 22239694}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2895,6 +3015,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 949564233}
@@ -3962,7 +4086,7 @@ GameObject:
   - 4: {fileID: 90397402}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4363,7 +4487,7 @@ GameObject:
   - 4: {fileID: 101847738}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4816,7 +4940,7 @@ GameObject:
   - 4: {fileID: 115727107}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5433,7 +5557,7 @@ GameObject:
   - 65: {fileID: 132290317}
   m_Layer: 0
   m_Name: Shelf N190913
-  m_TagString: Untagged
+  m_TagString: Dynamic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5576,6 +5700,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 101847737}
@@ -7624,6 +7752,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1761880616}
@@ -7859,6 +7991,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1066635485}
@@ -8776,7 +8912,7 @@ GameObject:
   - 4: {fileID: 224713662}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9440,6 +9576,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 937254815}
@@ -10899,6 +11039,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 834195919}
@@ -10974,7 +11118,7 @@ GameObject:
   - 4: {fileID: 276441520}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11673,6 +11817,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 2133125385}
@@ -11688,7 +11836,7 @@ GameObject:
   - 4: {fileID: 289513260}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11717,7 +11865,7 @@ GameObject:
   - 4: {fileID: 290493059}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11856,6 +12004,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 860416879}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 747478764}
@@ -13964,7 +14116,7 @@ GameObject:
   - 4: {fileID: 348902343}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14166,7 +14318,7 @@ GameObject:
   - 4: {fileID: 351217510}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14223,6 +14375,10 @@ Prefab:
     - target: {fileID: 400000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
+      propertyPath: m_TagString
+      value: Dynamic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
@@ -16013,7 +16169,7 @@ GameObject:
   - 4: {fileID: 401148258}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16516,7 +16672,7 @@ GameObject:
   - 4: {fileID: 419979004}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16582,6 +16738,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1521407457}
@@ -18372,7 +18532,7 @@ GameObject:
   - 4: {fileID: 454081327}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19584,6 +19744,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1363861618}
@@ -20085,6 +20249,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1094766981}
@@ -20283,6 +20451,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1007821054}
@@ -20335,6 +20507,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 401148257}
@@ -21044,6 +21220,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 753005565}
@@ -21201,7 +21381,7 @@ GameObject:
   - 4: {fileID: 529795862}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21693,6 +21873,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 115727106}
@@ -23557,6 +23741,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1565064260}
@@ -24583,7 +24771,7 @@ GameObject:
   - 4: {fileID: 606542888}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25072,6 +25260,10 @@ Prefab:
     - target: {fileID: 400000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
+      propertyPath: m_TagString
+      value: Dynamic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
@@ -25677,6 +25869,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 906219698}
@@ -26579,7 +26775,7 @@ GameObject:
   - 4: {fileID: 658629237}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27605,7 +27801,7 @@ GameObject:
   - 4: {fileID: 693014715}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27889,6 +28085,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 693014714}
@@ -28694,7 +28894,7 @@ GameObject:
   - 4: {fileID: 707128048}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29502,7 +29702,7 @@ GameObject:
   - 4: {fileID: 728597499}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29729,81 +29929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e62cb3e0da5af849b8c1fdf89e3239a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &730558633
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100016, guid: d5bd3cb29db0db2488e599e46c9dffcf, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 730558634}
-  - 33: {fileID: 730558637}
-  - 23: {fileID: 730558636}
-  - 95: {fileID: 730558635}
-  m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &730558634
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400016, guid: d5bd3cb29db0db2488e599e46c9dffcf, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 730558633}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 860416879}
-  m_RootOrder: 2
---- !u!95 &730558635
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: d5bd3cb29db0db2488e599e46c9dffcf,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 730558633}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8805dfceae4c71e4982594194fc69959, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &730558636
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300000, guid: d5bd3cb29db0db2488e599e46c9dffcf,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 730558633}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &730558637
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300000, guid: d5bd3cb29db0db2488e599e46c9dffcf,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 730558633}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &736518267
 Prefab:
   m_ObjectHideFlags: 0
@@ -29851,6 +29976,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 978083793}
@@ -29926,7 +30055,7 @@ GameObject:
   - 4: {fileID: 739978320}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29992,6 +30121,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 956335159}
@@ -30073,6 +30206,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1620199702}
@@ -30284,7 +30421,7 @@ GameObject:
   - 4: {fileID: 747478765}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30386,7 +30523,7 @@ GameObject:
   - 4: {fileID: 753005566}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32206,7 +32343,7 @@ GameObject:
   - 65: {fileID: 800426222}
   m_Layer: 0
   m_Name: Shelf N190913
-  m_TagString: Untagged
+  m_TagString: Dynamic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33437,6 +33574,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 529795861}
@@ -33452,7 +33593,7 @@ GameObject:
   - 4: {fileID: 834195920}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34180,6 +34321,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 224713661}
@@ -34195,7 +34340,7 @@ GameObject:
   - 4: {fileID: 850857834}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34334,6 +34479,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1649336482}
@@ -34638,7 +34787,6 @@ Transform:
   m_Children:
   - {fileID: 1191201381}
   - {fileID: 931035675}
-  - {fileID: 730558634}
   m_Father: {fileID: 1895452352}
   m_RootOrder: 0
 --- !u!114 &860416880
@@ -34693,7 +34841,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
+  m_Radius: .400000006
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -35467,7 +35615,7 @@ GameObject:
   - 4: {fileID: 885976800}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36234,7 +36382,7 @@ GameObject:
   - 4: {fileID: 906219699}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36387,7 +36535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &917392644
 Transform:
   m_ObjectHideFlags: 0
@@ -36711,7 +36859,7 @@ GameObject:
   - 4: {fileID: 925714820}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36986,7 +37134,7 @@ GameObject:
   - 4: {fileID: 937254816}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37344,7 +37492,7 @@ GameObject:
   - 4: {fileID: 942013998}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37606,7 +37754,7 @@ GameObject:
   - 4: {fileID: 949564234}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37635,7 +37783,7 @@ GameObject:
   - 4: {fileID: 954231120}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37768,7 +37916,7 @@ GameObject:
   - 4: {fileID: 956335160}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38127,6 +38275,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 290493058}
@@ -38142,7 +38294,7 @@ GameObject:
   - 4: {fileID: 978083794}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40029,7 +40181,7 @@ GameObject:
   - 4: {fileID: 1007821055}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40368,6 +40520,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1056636219}
@@ -41030,7 +41186,7 @@ GameObject:
   - 4: {fileID: 1025425201}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41200,6 +41356,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 658629236}
@@ -41252,6 +41412,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1498060305}
@@ -41630,6 +41794,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 954231119}
@@ -42263,7 +42431,7 @@ GameObject:
   - 4: {fileID: 1056636220}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42433,6 +42601,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 885976799}
@@ -42485,6 +42657,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1618693632}
@@ -42500,7 +42676,7 @@ GameObject:
   - 4: {fileID: 1066635486}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43417,7 +43593,7 @@ GameObject:
   - 4: {fileID: 1094766982}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45352,6 +45528,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1616467090}
@@ -45756,6 +45936,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 860416879}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1266458681}
@@ -46720,6 +46904,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
+      propertyPath: m_TagString
+      value: Dynamic
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52653c0e82377104fba91c3115584fc6, type: 3}
   m_RootGameObject: {fileID: 800426220}
@@ -46772,6 +46960,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1867422996}
@@ -47657,6 +47849,7 @@ Transform:
   m_Children:
   - {fileID: 1739675105}
   - {fileID: 411954580}
+  - {fileID: 16048405}
   m_Father: {fileID: 860416879}
   m_RootOrder: 0
 --- !u!95 &1191201382
@@ -49172,7 +49365,7 @@ GameObject:
   - 4: {fileID: 1221615748}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49994,7 +50187,7 @@ GameObject:
   - 4: {fileID: 1239553148}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50221,6 +50414,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1239553147}
@@ -50468,7 +50665,7 @@ GameObject:
   - 4: {fileID: 1247496355}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51765,7 +51962,7 @@ GameObject:
   - 4: {fileID: 1266458682}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51891,6 +52088,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 2077233951}
@@ -52958,6 +53159,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 351217509}
@@ -53307,6 +53512,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 707128047}
@@ -53960,6 +54169,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 90397401}
@@ -54312,6 +54525,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 942013997}
@@ -54588,6 +54805,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1394060073}
@@ -54603,7 +54824,7 @@ GameObject:
   - 4: {fileID: 1363861619}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54669,6 +54890,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1247496354}
@@ -54882,6 +55107,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 454081326}
@@ -55895,7 +56124,7 @@ GameObject:
   - 4: {fileID: 1394060074}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56538,7 +56767,7 @@ GameObject:
   - 4: {fileID: 1411749908}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57377,6 +57606,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1941831640}
@@ -58006,6 +58239,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 606542887}
@@ -58162,6 +58399,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1411749907}
@@ -58985,7 +59226,7 @@ GameObject:
   - 4: {fileID: 1492147759}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59156,7 +59397,7 @@ GameObject:
   - 4: {fileID: 1498060306}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59222,6 +59463,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 850857833}
@@ -59938,7 +60183,7 @@ GameObject:
   - 4: {fileID: 1521407458}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60551,7 +60796,7 @@ GameObject:
   - 4: {fileID: 1537912204}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61709,7 +61954,7 @@ GameObject:
   - 4: {fileID: 1565064261}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61967,8 +62212,11 @@ MonoBehaviour:
   infiniteAttacks: 1
   attacksLeft: 10
   attackCooldown: 1.79999995
+  attackStart: .550000012
+  attackDuration: .200000003
   playerSpine: {fileID: 1001717534}
   playerLogic: {fileID: 860416880}
+  attackController: {fileID: 16048406}
   startsOnPlayer: 1
   angularSpeed: 10
   radius: .699999988
@@ -62855,6 +63103,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 289513259}
@@ -63303,7 +63555,7 @@ GameObject:
   - 4: {fileID: 1600140488}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63932,7 +64184,7 @@ GameObject:
   - 4: {fileID: 1616467091}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64065,7 +64317,7 @@ GameObject:
   - 4: {fileID: 1618693633}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64217,7 +64469,7 @@ GameObject:
   - 4: {fileID: 1620199703}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65845,7 +66097,7 @@ GameObject:
   - 4: {fileID: 1649336483}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66283,6 +66535,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 419979003}
@@ -66746,6 +67002,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1221615747}
@@ -68525,6 +68785,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 860416879}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 348902342}
@@ -69165,6 +69429,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 728597498}
@@ -69994,6 +70262,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 276441519}
@@ -70191,7 +70463,7 @@ GameObject:
   - 4: {fileID: 1737554984}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70864,7 +71136,7 @@ GameObject:
   - 4: {fileID: 1761880617}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71280,6 +71552,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1025425200}
@@ -71692,6 +71968,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1847958481}
@@ -73001,8 +73281,11 @@ MonoBehaviour:
   infiniteAttacks: 1
   attacksLeft: 10
   attackCooldown: .5
+  attackStart: .550000012
+  attackDuration: .200000003
   playerSpine: {fileID: 1001717534}
   playerLogic: {fileID: 860416880}
+  attackController: {fileID: 0}
   startsOnPlayer: 0
   angularSpeed: 0
   radius: 0
@@ -73296,7 +73579,7 @@ GameObject:
   - 4: {fileID: 1830927522}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74055,7 +74338,7 @@ GameObject:
   - 4: {fileID: 1847958482}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75080,7 +75363,7 @@ GameObject:
   - 4: {fileID: 1867422997}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77312,6 +77595,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 860416879}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1737554983}
@@ -77999,7 +78286,7 @@ GameObject:
   - 4: {fileID: 1941831641}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79097,6 +79384,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 22239693}
@@ -79565,7 +79856,7 @@ GameObject:
   - 4: {fileID: 1988190500}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80129,6 +80420,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 739978319}
@@ -80701,6 +80996,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1600140487}
@@ -81759,6 +82058,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 925714819}
@@ -82789,6 +83092,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1830927521}
@@ -82864,7 +83171,7 @@ GameObject:
   - 4: {fileID: 2077233952}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85271,6 +85578,10 @@ Prefab:
       propertyPath: toFollow
       value: 
       objectReference: {fileID: 1895452352}
+    - target: {fileID: 190834, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb28e7e7745c4e4ba9fd3998a11be90, type: 2}
   m_RootGameObject: {fileID: 1492147758}
@@ -85738,7 +86049,7 @@ GameObject:
   - 4: {fileID: 2133125386}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86155,7 +86466,7 @@ GameObject:
   - 65: {fileID: 2144221414}
   m_Layer: 0
   m_Name: Shelf N190913
-  m_TagString: Untagged
+  m_TagString: Dynamic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

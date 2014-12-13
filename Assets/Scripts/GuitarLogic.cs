@@ -5,11 +5,14 @@ public class GuitarLogic : MonoBehaviour {
 
 	public bool infiniteAttacks = true;
 	public int attacksLeft = 10;
-	public float attackCooldown = 0.5f;
+	public float attackCooldown = 1.8f;
+	public float attackStart = 0.55f;
+	public float attackDuration = 0.2f;
 
 	public Transform playerSpine;
 	private Transform playerRightHand;
 	public CharacterControllerLogic playerLogic;
+	public AttackController attackController;
 
 	public bool startsOnPlayer = true;
 
@@ -24,6 +27,7 @@ public class GuitarLogic : MonoBehaviour {
 
 	private float coolDown;
 	private bool isCooldown = false;
+	private bool isAttacking = false;
 
 
 	private int STATE_PLAYER = 0;
@@ -53,12 +57,22 @@ public class GuitarLogic : MonoBehaviour {
 	}
 
 	void Update() {
-		if (isCooldown) {
+		if (isAttacking) {
 			coolDown -= Time.deltaTime;
 			if(coolDown <= 0) {
-				isCooldown = false;
-				//attacking = false;
+				isAttacking = false;
 				ResetPositionToBack();
+			} else if (!isCooldown) {
+				// wait a bit before setting the guitar as active
+				if (coolDown < attackCooldown - attackStart && coolDown >= attackCooldown - attackStart - attackDuration) {
+					isCooldown = true;
+					attackController.SetAttacking(true);
+				}
+			} else {
+				if (coolDown < attackCooldown - attackStart - attackDuration) {
+					isCooldown = false;
+					attackController.SetAttacking(false);
+				}
 			}
 		}
 	}
@@ -79,10 +93,10 @@ public class GuitarLogic : MonoBehaviour {
 	//}
 
 	void OnTriggerEnter(Collider col) {
-
 		if(isCooldown && col.gameObject.CompareTag("Enemy")) {
 			EnemyModelScript enemy = col.gameObject.GetComponent<EnemyModelScript>();
-			enemy.GotHit(this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*25000);
+			Debug.Log (this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*25000.0f);
+			enemy.GotHit(this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*25000.0f);
 			if(!infiniteAttacks) {
 				attacksLeft -= 1;
 				if(attacksLeft <= 0) {
@@ -90,7 +104,6 @@ public class GuitarLogic : MonoBehaviour {
 				}
 			}
 		}
-
 	}
 
 	public void AttachToPlayer() {
@@ -115,17 +128,20 @@ public class GuitarLogic : MonoBehaviour {
 	}
 
 	public void Attack() {
-		if ( currentState == STATE_PLAYER && !isCooldown) {
-			//position guitar in attack position
-			AttachToHand();
-			coolDown = attackCooldown;
-			isCooldown = true;
+		if ( currentState == STATE_PLAYER) {
+			if (!isAttacking) {
+				//position guitar in attack position
+				AttachToHand();
+				coolDown = attackCooldown;
+				isCooldown = false;
+				isAttacking = true;
 
-			//this.transform.localPosition = new Vector3 (-0.1173791f, -0.5730895f, -0.1939585f);
-			//this.transform.localEulerAngles = new Vector3(90.0f, 0f, 0f);
-			//currentAngle = 90;
+				//this.transform.localPosition = new Vector3 (-0.1173791f, -0.5730895f, -0.1939585f);
+				//this.transform.localEulerAngles = new Vector3(90.0f, 0f, 0f);
+				//currentAngle = 90;
 
-			//attacking = true;
+				//attacking = true;
+			}
 		}
 
 	}

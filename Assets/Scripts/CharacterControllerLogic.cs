@@ -45,6 +45,10 @@ public class CharacterControllerLogic : MonoBehaviour {
     private double timeGrounded = 0;
     private const double jumpDelay = 0.15;
 
+    public bool IsGrounded() {
+        return grounded;
+    }
+
     // Use this for initialization
     void Start () {
         capsule = GetComponent<CapsuleCollider>();
@@ -172,7 +176,6 @@ public class CharacterControllerLogic : MonoBehaviour {
 
         RaycastHit rayhitWall;
         bool jumpingToWall = Physics.Raycast(this.transform.position+Time.fixedDeltaTime*rigidbody.velocity, new Vector3(rigidbody.velocity.x,0,rigidbody.velocity.y), out rayhitWall);
-        Debug.Log(rayhitWall.collider+" "+rayhitWall.distance);
         if (rayhitWall.collider != null && rayhitWall.collider.enabled && rayhitWall.distance < 1.8) {
             rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
         }

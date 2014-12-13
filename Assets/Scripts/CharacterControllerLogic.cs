@@ -164,14 +164,19 @@ public class CharacterControllerLogic : MonoBehaviour {
     {
         RaycastHit rayhit;
         bool fallingToGround = rigidbody.velocity.y < 0 && Physics.Raycast(this.transform.position, Vector3.down, out rayhit);
-        if(fallingToGround) {
-            bool hitGround = rayhit.distance <= Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime;
-            if(hitGround)
-            {
-                timeGrounded = 0;
-                UpdateGroundedPhysics();
-            }
+        bool hitGround = rayhit.distance <= Mathf.Abs(rigidbody.velocity.y)*Time.fixedDeltaTime;
+        if(fallingToGround && hitGround) {
+            timeGrounded = 0;
+            UpdateGroundedPhysics();
         }
+
+        RaycastHit rayhitWall;
+        bool jumpingToWall = Physics.Raycast(this.transform.position+Time.fixedDeltaTime*rigidbody.velocity, new Vector3(rigidbody.velocity.x,0,rigidbody.velocity.y), out rayhitWall);
+        Debug.Log(rayhitWall.collider+" "+rayhitWall.distance);
+        if (rayhitWall.collider != null && rayhitWall.collider.enabled && rayhitWall.distance < 1.8) {
+            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+        }
+
     }
 
     private void UpdateClimbing(Vector2 inputLeftStick) 

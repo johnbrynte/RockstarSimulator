@@ -4,7 +4,7 @@ using System.Collections;
 public class AttackController : MonoBehaviour {
 
 	public float attackVelocity = 10.0f;
-	public float attackForce = 50.0f;
+	public float attackForce = 2000.0f;
 
 	private bool isAttacking = false;
 

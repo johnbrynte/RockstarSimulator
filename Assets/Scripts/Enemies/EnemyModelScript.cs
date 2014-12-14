@@ -39,7 +39,6 @@ public class EnemyModelScript : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (!active) {
-			Debug.Log("inactive");
 			timeout -= Time.deltaTime;
 			if (timeout <= 0) {
 				active = true;

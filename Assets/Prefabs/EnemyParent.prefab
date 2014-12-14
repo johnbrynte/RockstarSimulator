@@ -31,7 +31,7 @@ GameObject:
   - 4: {fileID: 490834}
   m_Layer: 0
   m_Name: EnemyParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,14 +47,14 @@ GameObject:
   - 33: {fileID: 3390772}
   - 23: {fileID: 2390772}
   - 195: {fileID: 19590772}
-  - 114: {fileID: 11490774}
   - 114: {fileID: 11418168}
+  - 82: {fileID: 8229516}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &480982
 Transform:
@@ -75,7 +75,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .790000021, y: 14.5, z: -22.7000008}
+  m_LocalPosition: {x: -6.3393898, y: -.145738885, z: -31.2941532}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 490840}
@@ -102,7 +102,7 @@ Renderer:
   m_GameObject: {fileID: 180982}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -175,6 +175,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 70, y: 185.535172, z: 70}
   m_Center: {x: .254276276, y: 92.9414749, z: 1.83514833}
+--- !u!82 &8229516
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190840}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 58f42d813c9e841469e3a10df8c9447b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .356000006
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 300
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9580982
 Animator:
   serializedVersion: 3
@@ -201,8 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4667fea47349143aa50e97472ace96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toFollow: {fileID: 0}
-  navComponent: {fileID: 0}
 --- !u!114 &11480982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,18 +274,6 @@ MonoBehaviour:
   maxDistance: 3
   maxVelocity: 100
   turnSmooth: 10
---- !u!114 &11490774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aae129ca6cd6a842babd56941d18d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toFollow: {fileID: 0}
 --- !u!195 &19590772
 NavMeshAgent:
   m_ObjectHideFlags: 1

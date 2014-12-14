@@ -25,7 +25,6 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private GuitarLogic weapon;
 
     private bool grounded = false;
-    private bool airbound = false;
     private bool climbing = false;
     private float speed = 0;
     
@@ -93,7 +92,6 @@ public class CharacterControllerLogic : MonoBehaviour {
             dummy.transform.localPosition = groundOffset;
 
             animator.SetBool("IsInAir", true);
-            airbound = true;
         }
     }
 
@@ -327,14 +325,11 @@ public class CharacterControllerLogic : MonoBehaviour {
                 }
                 else
                 {
-                    // We are standing over a dinamic object,
+                    // We are standing over a dynamic object,
                     // set the groundVelocity to Zero to avoid jiggers and extreme accelerations
                     groundVelocity = Vector3.zero;
                 }
 
-                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
-
-                // Esta en el suelo
                 grounded = true;
             }
 

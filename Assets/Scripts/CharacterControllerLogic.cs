@@ -140,7 +140,7 @@ public class CharacterControllerLogic : MonoBehaviour {
     private void Jump() 
     {
         jumpMomentum = rigidbody.velocity*jumpMomentumSpeed;
-        rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y + jumpSpeed, rigidbody.velocity.z);
+        rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpSpeed, rigidbody.velocity.z);
         jumpFlag = false;
     }
 

@@ -4,6 +4,7 @@ using System.Collections;
 public class AttackController : MonoBehaviour {
 
 	public float attackVelocity = 10.0f;
+	public float attackForce = 50.0f;
 
 	private bool isAttacking = false;
 
@@ -23,7 +24,7 @@ public class AttackController : MonoBehaviour {
 				Vector3 direction = this.transform.forward;
 				direction.y = 0.2f;
 				direction.Normalize();
-				col.gameObject.rigidbody.velocity = direction*attackVelocity;
+				col.gameObject.rigidbody.velocity = direction*attackForce/col.gameObject.rigidbody.mass;
 				audio.Play();
 			}
 		}

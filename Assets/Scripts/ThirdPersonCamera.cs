@@ -53,7 +53,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         parentRig = this.transform.parent;
-		curLookDir = followXForm.forward;
+		curLookDir = -followXForm.forward;
         distanceAwayFree = distanceAway;
         distanceUpFree = distanceUp;
         characterOffset = followXForm.position + offset;

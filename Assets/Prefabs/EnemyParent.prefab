@@ -47,14 +47,13 @@ GameObject:
   - 33: {fileID: 3390772}
   - 23: {fileID: 2390772}
   - 195: {fileID: 19590772}
-  - 114: {fileID: 11490774}
   - 114: {fileID: 11418168}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &480982
 Transform:
@@ -75,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .790000021, y: 14.5, z: -22.7000008}
+  m_LocalPosition: {x: 29.7999992, y: -6.0999999, z: 11.5600004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 490840}
@@ -218,18 +217,6 @@ MonoBehaviour:
   maxDistance: 3
   maxVelocity: 100
   turnSmooth: 10
---- !u!114 &11490774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aae129ca6cd6a842babd56941d18d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toFollow: {fileID: 0}
 --- !u!195 &19590772
 NavMeshAgent:
   m_ObjectHideFlags: 1

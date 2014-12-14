@@ -43,7 +43,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private bool attackFlag = false;
 
     private double timeGrounded = 0;
-    private const double jumpDelay = 0.15;
+    private const double jumpDelay = 0.2;
 
     public bool IsGrounded() {
         return grounded;
@@ -139,6 +139,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 
     private void Jump() 
     {
+        timeGrounded = 0;
         jumpMomentum = rigidbody.velocity*jumpMomentumSpeed;
         rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpSpeed, rigidbody.velocity.z);
         jumpFlag = false;

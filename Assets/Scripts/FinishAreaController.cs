@@ -9,7 +9,7 @@ public class FinishAreaController : MonoBehaviour {
 	void OnTriggerEnter(Collider collision) {
 
 		//if it is the player
-		if (collision.gameObject.tag == "Player"){
+		if (collision.gameObject.tag == "PlayerBody"){
 
 			//Load the correct level
 			Application.LoadLevel("new_game");

@@ -6,6 +6,9 @@ public class EnemyMovementCS : MonoBehaviour
 	private Transform toFollow;
 	private NavMeshAgent navComponent;
 
+	private bool active = true;
+	private float timeout = 3;
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +29,14 @@ public class EnemyMovementCS : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
+		if (!active) {
+			timeout -= Time.deltaTime;
+			if (timeout <= 0) {
+				active = true;
+			}
+		}
 		//If we have something to follow set
-		if (toFollow) {
+		if (toFollow && active) {
 			
 			//Set where we should go
 			navComponent.SetDestination(toFollow.position);
@@ -36,8 +45,9 @@ public class EnemyMovementCS : MonoBehaviour
 	}
 
 	public void GotHit() {
-		//Debug.Log ("Im hit!");
-		Destroy (this.gameObject);
+		active = false;
+		timeout = 3;
+		Debug.Log ("Im hit!");
 	}
 }
 

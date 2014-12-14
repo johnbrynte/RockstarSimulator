@@ -93,10 +93,9 @@ public class GuitarLogic : MonoBehaviour {
 	//}
 
 	void OnTriggerEnter(Collider col) {
-		if(isCooldown && col.gameObject.CompareTag("Enemy")) {
+		if(isCooldown && col.name.Contains("Michael")) { //uuuh, but have to be like this i guess
 			EnemyModelScript enemy = col.gameObject.GetComponent<EnemyModelScript>();
-			Debug.Log (this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*25000.0f);
-			enemy.GotHit(this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*25000.0f);
+			enemy.GotHit(this.playerLogic.GetVelocity() + this.playerLogic.GetDirection()*75000.0f);
 			if(!infiniteAttacks) {
 				attacksLeft -= 1;
 				if(attacksLeft <= 0) {

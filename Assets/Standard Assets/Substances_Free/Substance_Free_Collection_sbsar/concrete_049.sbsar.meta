@@ -346,9 +346,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: First_Layer_Color
       value:
-        scalar[0]: .16911763
-        scalar[1]: .16911763
-        scalar[2]: .16911763
+        scalar[0]: .5
+        scalar[1]: .5
+        scalar[2]: .5
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Second_Layer_Color
@@ -465,7 +465,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Depth
       value:
-        scalar[0]: -.104999997
+        scalar[0]: -.537999988
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -493,7 +493,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Light_Angle
       value:
-        scalar[0]: .101000004
+        scalar[0]: .128999993
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -507,14 +507,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Saturation
       value:
-        scalar[0]: .51700002
+        scalar[0]: .432999998
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Luminosity
       value:
-        scalar[0]: .444000006
+        scalar[0]: .597000003
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -577,16 +577,16 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Metal_Frame_Color
       value:
-        scalar[0]: .117600001
-        scalar[1]: .0784000009
-        scalar[2]: .0196000002
+        scalar[0]: .448529422
+        scalar[1]: .40235728
+        scalar[2]: .333099067
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Rust_Color
       value:
-        scalar[0]: .279411793
-        scalar[1]: .264018506
-        scalar[2]: .252703309
+        scalar[0]: 1
+        scalar[1]: 1
+        scalar[2]: 1
         scalar[3]: 0
         texture: {instanceID: 0}
     materialInformation:
@@ -622,7 +622,7 @@ SubstanceImporter:
         data:
           first:
             name: _Color
-          second: {r: 1, g: 1, b: 1, a: 1}
+          second: {r: .779411793, g: .779411793, b: .779411793, a: 1}
         data:
           first:
             name: _SpecColor

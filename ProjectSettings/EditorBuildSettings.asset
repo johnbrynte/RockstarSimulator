@@ -15,3 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/debuglevel_1_with_mesh_and_enemies.unity
   - enabled: 1
     path: Assets/Scenes/game_over.unity
+  - enabled: 1
+    path: Assets/Scenes/Scene_level.unity
+  - enabled: 1
+    path: Assets/Scenes/BackstageLevel.unity

@@ -31,7 +31,7 @@ function OnGUI() {
 	
 	if (GUI.Button(new Rect(xPos, yPos , 250, 50),"Start game")) 
 	{
-		Application.LoadLevel("debuglevel_1_with_mesh_and_enemies");
+		Application.LoadLevel("Scene_level");
 	}
 	if (GUI.Button(new Rect(xPos, yPos * 2, 250, 50),"Quit game")) 
 	{

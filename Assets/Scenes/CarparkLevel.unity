@@ -5975,22 +5975,32 @@ AudioSource:
   MinDistance: 10
   MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - time: .00412371755
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -5.00199175
+      outSlope: -5.00199175
       tangentMode: 0
-    - time: 1
+    - time: .173195884
+      value: .223502308
+      inSlope: -.688020229
+      outSlope: -.688020229
+      tangentMode: 0
+    - time: .552577317
+      value: .0702764988
+      inSlope: -.312624484
+      outSlope: -.312624484
+      tangentMode: 0
+    - time: .800687313
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -.200079843
+      outSlope: -.200079843
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -14929,22 +14939,32 @@ AudioSource:
   MinDistance: 13
   MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+    - time: .0165979359
+      value: .995391726
+      inSlope: -7.69538403
+      outSlope: -7.69538403
       tangentMode: 0
-    - time: 1
+    - time: .174089327
+      value: .168202788
+      inSlope: -.587705791
+      outSlope: -.587705791
+      tangentMode: 0
+    - time: .310377985
+      value: .0841013715
+      inSlope: -.256061614
+      outSlope: -.256061614
+      tangentMode: 0
+    - time: .591065288
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -.130051896
+      outSlope: -.130051896
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -14962,7 +14982,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: .00833333377
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

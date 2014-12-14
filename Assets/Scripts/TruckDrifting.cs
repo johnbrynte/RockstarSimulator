@@ -5,7 +5,7 @@ public class TruckDrifting : MonoBehaviour {
 
 	public Transform driftTarget;
 	public float speed;
-	public TruckSmoke smokeScript;
+	private TruckSmoke smokeScript;
 	private AudioSource audio;
 
 

@@ -19,3 +19,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_level.unity
   - enabled: 1
     path: Assets/Scenes/BackstageLevel.unity
+  - enabled: 1
+    path: Assets/Scenes/CarparkLevel.unity
+  - enabled: 1
+    path: Assets/Scenes/FinishLevel.unity

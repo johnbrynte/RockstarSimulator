@@ -549,6 +549,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414474}
+  - 65: {fileID: 6500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: follow
   m_TagString: Dummy
@@ -1107,7 +1109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0999999, y: 2.29999995, z: 49.5999985}
+  m_LocalPosition: {x: 0, y: 2.71000004, z: -5.03000021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 414468}
@@ -1235,6 +1237,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &6514536
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1404,6 +1418,17 @@ Animator:
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e62cb3e0da5af849b8c1fdf89e3239a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11414528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1462,7 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackVelocity: 10
-  attackForce: 50
+  attackForce: 2000
 --- !u!114 &11414534
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,11 +9,15 @@ public class EnemyModelScript : MonoBehaviour {
 	public float maxVelocity;
 	public float turnSmooth = 10;
 
+	private bool isStatic;
 	private bool active = true;
 	private float timeout = 3;
 
 	// Use this for initialization
 	void Start () {
+		isStatic = rigidbody == null;
+		GetComponent<Animator>().SetBool ("IsStatic", isStatic);
+
 		foreach (Transform child in transform.parent.transform)
 		{
 			if (child.gameObject.tag == "Enemy")
@@ -29,12 +33,13 @@ public class EnemyModelScript : MonoBehaviour {
 	}
 
 	// Should not be here, but cant be in movement cause they are attached to different things. This is what we can get from the collision detection AFAIK /peter
-	public void GotHit(Vector3 force) {
+	public void GotHit(Vector3 velocity) {
 		active = false;
 		timeout = 3;
 		enemyAgent.GetComponent<EnemyMovementCS>().GotHit();
-		rigidbody.velocity = Vector3.zero;
-		rigidbody.AddForce(force);
+		if (!isStatic) {
+			rigidbody.velocity = velocity;
+		}
 	}
 
 	void FixedUpdate () {
@@ -44,28 +49,29 @@ public class EnemyModelScript : MonoBehaviour {
 				active = true;
 			}
 		}
-		Vector3 direction = enemyAgent.transform.position - transform.position;
-		direction.y = 0;
-		direction.Normalize();
-		//Distance check to agent
-		float distance = Vector3.Distance(transform.position, enemyAgent.transform.position);
-		if (distance > minDistance && active) {
-			float velocity = distance / Time.fixedDeltaTime;
-			if (velocity > maxVelocity) {
+		if (!isStatic) {
+			Vector3 direction = enemyAgent.transform.position - transform.position;
+			direction.y = 0;
+			direction.Normalize ();
+			//Distance check to agent
+			float distance = Vector3.Distance (transform.position, enemyAgent.transform.position);
+			if (distance > minDistance && active) {
+				float velocity = distance / Time.fixedDeltaTime;
+				if (velocity > maxVelocity) {
 					//velocity = maxVelocity;
-			}
-			rigidbody.velocity = Vector3.Lerp (rigidbody.velocity, direction * velocity, Time.fixedDeltaTime);
-			transform.rotation = Quaternion.Lerp (transform.rotation, Quaternion.FromToRotation(Vector3.forward, direction), turnSmooth*Time.fixedDeltaTime);
+				}
+				rigidbody.velocity = Vector3.Lerp (rigidbody.velocity, direction * velocity, Time.fixedDeltaTime);
+				transform.rotation = Quaternion.Lerp (transform.rotation, Quaternion.FromToRotation (Vector3.forward, direction), turnSmooth * Time.fixedDeltaTime);
 
-			//If we are to far away
-			if (distance > maxDistance) {
-				float d = distance - maxDistance;
-				Vector3 moveDir = transform.position - enemyAgent.transform.position;
-				moveDir.Normalize ();
-				enemyAgent.GetComponent<NavMeshAgent> ().transform.position += moveDir * d;
-			} else {
+				//If we are to far away
+				if (distance > maxDistance) {
+					float d = distance - maxDistance;
+					Vector3 moveDir = transform.position - enemyAgent.transform.position;
+					moveDir.Normalize ();
+					enemyAgent.GetComponent<NavMeshAgent> ().transform.position += moveDir * d;
+				} else {
+				}
 			}
 		}
-
 	}
 }

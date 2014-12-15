@@ -19,12 +19,18 @@ public class AttackController : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider col) {
-		if (isAttacking) {
+		if (isAttacking && col.gameObject.rigidbody != null) {
+			Vector3 velocity = this.transform.forward;
+			velocity.y = 0.2f;
+			velocity.Normalize();
+			velocity = velocity*attackForce/col.gameObject.rigidbody.mass;
+
 			if (col.gameObject.CompareTag("Dynamic")) {
-				Vector3 direction = this.transform.forward;
-				direction.y = 0.2f;
-				direction.Normalize();
-				col.gameObject.rigidbody.velocity = direction*attackForce/col.gameObject.rigidbody.mass;
+				col.gameObject.rigidbody.velocity = velocity;
+				audio.Play();
+			} else if(col.name.Contains("Michael")) { //uuuh, but have to be like this i guess
+				EnemyModelScript enemy = col.gameObject.GetComponent<EnemyModelScript>();
+				enemy.GotHit(velocity);
 				audio.Play();
 			}
 		}

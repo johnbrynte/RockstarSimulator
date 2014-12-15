@@ -121,7 +121,7 @@ public class GuitarLogic : MonoBehaviour {
 	public void AttachToHand() {
 		
 		this.transform.parent = playerRightHand;
-		this.transform.localPosition = new Vector3 (-0.054f, 0.354f, -0.052f);
+		this.transform.localPosition = new Vector3 (-0.054f, 0.654f, -0.052f);
 		this.transform.localEulerAngles = new Vector3 (-90f, 30f, 0f);
 		//this.playerLogic.setWeapon (this);
 	}

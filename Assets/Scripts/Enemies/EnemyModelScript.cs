@@ -64,7 +64,6 @@ public class EnemyModelScript : MonoBehaviour {
 				moveDir.Normalize ();
 				enemyAgent.GetComponent<NavMeshAgent> ().transform.position += moveDir * d;
 			} else {
-
 			}
 		}
 

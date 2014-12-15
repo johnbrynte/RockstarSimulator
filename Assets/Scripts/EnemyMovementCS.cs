@@ -25,6 +25,7 @@ public class EnemyMovementCS : MonoBehaviour
 		navComponent.speed = Random.Range(5.0f, 6.0f);
 		navComponent.acceleration = Random.Range(8.0f, 9.0f);
 		navComponent.angularSpeed = Random.Range(90.0f, 140.0f);
+		navComponent.stoppingDistance = 1;
 	}
 
 	// Update is called once per frame
@@ -47,7 +48,6 @@ public class EnemyMovementCS : MonoBehaviour
 	public void GotHit() {
 		active = false;
 		timeout = 3;
-		Debug.Log ("Im hit!");
 	}
 }
 

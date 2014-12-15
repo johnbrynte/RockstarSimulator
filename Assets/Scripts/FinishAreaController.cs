@@ -12,7 +12,7 @@ public class FinishAreaController : MonoBehaviour {
 		if (collision.gameObject.tag == "PlayerBody"){
 
 			//Load the correct level
-			Application.LoadLevel("new_game");
+			Application.LoadLevel("ending");
 
 			}
 	}
